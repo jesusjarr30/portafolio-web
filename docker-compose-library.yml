@@ -1,0 +1,52 @@
+version: "3.8"
+services:
+  my-mongo-db:
+    container_name: "my-mongo-db"
+    image: mongo:4.4.3
+    ports:
+      - 27017:27017
+    expose:
+      - 27017
+    networks:
+        frontend:
+            ipv4_address: 172.80.0.2
+            
+  library:
+    container_name: "library"
+    image: library:0.0.1-SNAPSHOT
+    ports:
+      - 8080:8080
+    depends_on:
+      - my-mongo-db
+    networks:
+        frontend:
+            ipv4_address: 172.80.0.3
+
+  frontLibrary:
+    container_name: "libraryFront"
+    image: libraryfront
+    restart: always
+    ports:
+      - 4200:4200
+    networks:
+        frontend:
+            ipv4_address: 172.80.0.4
+
+  nginx:
+    container_name: "nginx"
+    image: nginx
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    networks:
+        frontend:
+            ipv4_address: 172.80.0.5
+
+networks:
+ 
+  frontend:
+    ipam:
+      config:
+        - subnet: 172.80.0.0/24
