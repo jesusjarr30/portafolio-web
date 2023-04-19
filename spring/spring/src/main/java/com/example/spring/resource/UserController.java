@@ -29,6 +29,6 @@ public class UserController {
     @DeleteMapping("/delete/{id}")
     public String deleteUser(@PathVariable String id){
         repository.deleteById(id);
-        return "The user eleminate with the id is "+id;
+        return "User to eliminate"+id;
     }
 }

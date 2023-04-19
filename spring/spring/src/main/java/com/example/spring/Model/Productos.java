@@ -20,6 +20,5 @@ public class Productos {
     private int cost;
     private String description;
     private String version;
-    private Date buyDate;
-    private String idUser;//this will use for the user
+    private String title;
 }
