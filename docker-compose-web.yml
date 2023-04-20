@@ -13,15 +13,13 @@ services:
             
   library:
     container_name: "api_services"
-    image: library:0.0.1-SNAPSHOT
-    ports:
+    image: "spring:0.0.1-SNAPSHOT"
       - 8080:8080
     depends_on:
       - my-mongo-db
     networks:
         frontend:
             ipv4_address: 173.80.0.3
-
 
   nginx:
     container_name: "nginx"
