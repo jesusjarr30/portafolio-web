@@ -16,7 +16,6 @@ import java.util.Date;
 public class Productos {
     @Id
     private String id;
-
     private int cost;
     private String description;
     private String version;

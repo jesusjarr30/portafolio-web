@@ -1,7 +1,9 @@
 package com.example.spring.Model;
 
-public class ventas {
+import nonapi.io.github.classgraph.json.Id;
 
+public class ventas {
+    @Id
     private int id;
     private String idUser;
     private String pago;
