@@ -13,7 +13,7 @@ services:
             
   library:
     container_name: "api_services"
-    image: "spring:0.0.1-SNAPSHOT"
+    image: spring:0.0.1-SNAPSHOT
       - 8080:8080
     depends_on:
       - my-mongo-db

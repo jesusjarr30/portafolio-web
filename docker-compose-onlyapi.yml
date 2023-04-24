@@ -6,3 +6,12 @@ services:
     image: spring:0.0.1-SNAPSHOT
     ports:
       - 8080:8080
+  
+    networks:
+        frontend:
+            ipv4_address: 172.60.0.3
+networks:
+    frontend:
+    ipam:
+        config:
+        - subnet: 172.60.0.0/24
