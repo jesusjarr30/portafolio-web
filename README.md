@@ -6,3 +6,6 @@ Docker
 React 
 Java Sring Boot 
 
+
+To run the web page use npm start
+
