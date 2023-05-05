@@ -1,0 +1,32 @@
+version: "3.8"
+services:
+  my-mongo-db:
+    container_name: "mongo-db"
+    image: mongo:4.4.3
+    ports:
+      - 27017:27017
+    expose:
+      - 27017
+    networks:
+        redPortafolio:
+            ipv4_address: 180.80.0.2
+            
+  library:
+    container_name: "ApiPortafolio"
+    build: 
+        context: proyectoApi
+        dockerfile: dockerfile
+    image: portafolio.jar
+    ports:
+      - 8080:8080
+    depends_on:
+      - my-mongo-db
+    networks:
+        redPortafolio:
+            ipv4_address: 180.80.0.3 
+networks:
+
+  redPortafolio:
+    ipam:
+      config:
+        - subnet: 180.80.0.0/24
