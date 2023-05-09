@@ -10,19 +10,16 @@ import java.util.List;
 public class ProjectController {
     @Autowired
     private ProyectoRepository proyectReposirory;
-
     /*
     los metodos que se le puede agregar son los siguientes
     @PostMapping
     @GetMapping
     @DeleteMapping
-
      */
     @PostMapping("/addProject")
     public String addProyect(@RequestBody Proyecto proyecto){
         proyectReposirory.save(proyecto);
         return proyecto.getName();
-
     }
     @GetMapping("/getProjects")
     public List<Proyecto> getProyects(){
