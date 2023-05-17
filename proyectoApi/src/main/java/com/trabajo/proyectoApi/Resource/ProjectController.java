@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
+
 @RestController
 public class ProjectController {
     @Autowired
@@ -17,7 +19,15 @@ public class ProjectController {
     @DeleteMapping
      */
     @PostMapping("/addProject")
-    public String addProyect(@RequestBody Proyecto proyecto){
+    public String addProyect(@RequestBody Proyecto proyecto) throws Exception {
+
+        if(proyecto.getName()==null || proyecto.getName()=="") throw new Exception("Can't add null or empty values1");
+        if(proyecto.getLink()==null || proyecto.getLink()=="")throw new Exception("Can't add null or empty values2");
+        if(proyecto.getLanguage()==null || proyecto.getLanguage()=="") throw new Exception("Can't add null or empty values3");
+        if(proyecto.getDescription()==null || proyecto.getDescription()=="")throw new Exception("Can't add null or empty values4");
+        if(proyecto.getDateRelase()==null || proyecto.getDateRelase()=="") throw new Exception("Can't add null or empty values5");
+        //validate the entry
+
         proyectReposirory.save(proyecto);
         return proyecto.getName();
     }
@@ -29,6 +39,7 @@ public class ProjectController {
     public String borrarProyect(@RequestBody String id){
         proyectReposirory.deleteById(id);
         return id;
+
     }
-    //creo por el momento para hacer pruebas es sufu¿iciente con esto faltaria hacer las modificaciones para los updates
+    //need to ad the edit method in both cases
 }
