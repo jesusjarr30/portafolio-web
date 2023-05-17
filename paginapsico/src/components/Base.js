@@ -1,26 +1,37 @@
-import { useState, useEffect ,Text,h1} from 'react';
-import {  Container} from "react-bootstrap";
+import React from 'react';
 
+class Base extends React.Component {
+    constructor(props) {
+        super(props);
 
-export const Base = () =>{
-    const [skillsd, setSkillsd] = useState([]);
+        this.state = {
+            postId: null
+        };
+    }
 
-   useEffect(() => {
-      fetch('http://localhost:8080/getSkills')
-         .then((res) => res.json())
-         .then((data) => {
-            console.log(data);
-            setSkillsd(data);
-         })
-         .catch((err) => {
-            console.log(err.message);
-         });
-   }, []);
-return (
-   <Container>
-      <h1 style={{ color: 'red' }}>Hello world</h1>
-   </Container>
-    
+    componentDidMount() {
+        // Simple POST request with a JSON body using fetch
+        const requestOptions = {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ title: 'React POST Request Example' })
+        };
+        fetch('https://localhost:8080/getSkills', requestOptions)
+            .then(response => response.json())
+            .then(data => this.setState({ postId: data.id }));
+    }
 
-)
-};
+    render() {
+        const { postId } = this.state;
+        return (
+            <div className="card text-center m-3">
+                <h5 className="card-header">Simple POST Request</h5>
+                <div className="card-body">
+                    Returned Id: {postId}
+                </div>
+            </div>
+        );
+    }
+}
+
+export { PostRequest }; 
