@@ -18,7 +18,6 @@ const contactEmail = nodemailer.createTransport(
         auth: {
             user: "*******@gmail.com",
             pass:""
-
         },
     }
 );
@@ -31,12 +30,23 @@ contactEmail.verify((error) => {
     });
 router.post("/contact", (req,res) =>{
      const name = req.body.firstName + req.body.lastName;
-     const email= re.body.email;
+     const email= req.body.email;
      const message = req.body.message;
      const phone = req.body-phone;
      const mail ={
-        from: name
-     }
-} 
-
-)
+        from: name,
+        to: "******@gmail.com",
+        subject: "Contact Form Submission - PortFolio",
+        html: `<p>Name : ${name}</p>
+                <p>Email: ${email}</p>
+                <p>phone: ${phone}</p>
+                <p>Message: ${message}</p>`
+     };
+     contactEmail.sendMail(mail, (error) => {
+        if(error){
+            res.json(error);
+        } else{
+            res.json({code:200, status:"Message Sent"});
+        }
+     });
+} );
