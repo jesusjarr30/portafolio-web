@@ -1,37 +1,30 @@
-/*import React from 'react';
+import React,{ Component } from 'react';
 
-class Base extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            postId: null
-        };
-    }
-
-    componentDidMount() {
+export const Base = () => { 
+   
+    /*componentDidMount(); {
         // Simple POST request with a JSON body using fetch
-        const requestOptions = {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title: 'React POST Request Example' })
+        let _this =this;
+        var xhttp= new XMLHttpRequest();
+        xhttp.onreadystatechange=function(){
+          if(this.readyState==4 && this.status==200){
+            console.log("Entro al if");
+            var myArr=JSON.parse(this.responseText);
+            console.log("LOs resultados son "+myArr);
+            _this.setState({users:myArr});
+          }
+          else{
+            console.log("No entro al if");
+          }
+          
         };
-        fetch('https://localhost:8080/getSkills', requestOptions)
-            .then(response => response.json())
-            .then(data => this.setState({ postId: data.id }));
-    }
-
-    render() {
-        const { postId } = this.state;
+        xhttp.open('GET','http://localhost:8080/getSkills',true);
+        xhttp.send();
+    }*/
         return (
-            <div className="card text-center m-3">
-                <h5 className="card-header">Simple POST Request</h5>
-                <div className="card-body">
-                    Returned Id: {postId}
-                </div>
+            <div>
+                <h5>Simple POST Request</h5>
+                
             </div>
         );
-    }
 }
-
-export { PostRequest }; */

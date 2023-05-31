@@ -39,7 +39,6 @@ public class ProjectController {
     public String borrarProyect(@RequestBody String id){
         proyectReposirory.deleteById(id);
         return id;
-
     }
     //need to ad the edit method in both cases
 }
