@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+//aqui va la linea de falta parea que el ree controller enable the cors
 
 @RestController
 public class ProjectController {

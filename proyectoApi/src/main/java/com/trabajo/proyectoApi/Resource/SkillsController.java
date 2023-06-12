@@ -6,12 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @RestController
 public class SkillsController {
     @Autowired
     private SkillsRepository skillsRepository;
-
     @PostMapping("/addskill")
     private String addSkill(@RequestBody Skills skill){
         skillsRepository.save((skill));
@@ -26,6 +24,4 @@ public class SkillsController {
         skillsRepository.deleteById(id);
         return id;
     }
-
-
 }
