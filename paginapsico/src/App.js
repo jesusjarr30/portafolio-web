@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-//import './App.css';
+import './App.css';
 import { NavBar } from "./components/NavBar";
 import {Banner } from "./components/Banner";
 import {Skills} from "./components/Skills";
@@ -12,12 +12,14 @@ import React, { Component,Text } from 'react';
 
  function App() {
 
-
   return (
-    <div>
-      <testBa />
+    <div className="App">
+      <NavBar />
+      <Banner />
+      <Skills />
+      <Projects/>
+      <Contact />      
     </div>
   );
 }
-export default App();
-
+export default App;
