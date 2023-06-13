@@ -4,10 +4,12 @@ import projImg1 from "../assets/img/project-img1.png";
 import projImg2 from "../assets/img/project-img2.png";
 import projImg3 from "../assets/img/project-img3.png";
 import colorSharp2 from "../assets/img/color-sharp2.png";
+import { useState, useEffect } from 'react';
 
 
 
 export const Projects = () =>{
+  const [projects2, setProjects2] = useState([]);
 
     const projects = [
         {
@@ -41,6 +43,25 @@ export const Projects = () =>{
           imgUrl: projImg3,
         },
       ];
+
+      useEffect(() => {
+        fetchData(); 
+      }, []);
+      function fetchData() {
+        fetch('http://localhost:8080/getProjects')
+          .then(response => response.json())
+          .then(data => {
+            // Aquí puedes manejar los datos de respuesta de la API
+            console.log(data);
+            setProjects2(data); // Guardar los datos en el estado 'projects'
+          })
+          .catch(error => {
+            // Aquí puedes manejar cualquier error de la solicitud
+            console.error('Error:', error);
+          });
+      }
+
+
     return(
         <section className= "project" id = "project">
             <Container>
@@ -88,7 +109,6 @@ export const Projects = () =>{
             </Container>
             <img className="backgorund-image-right" src={colorSharp2}></img>
         </section>
-
     )
     
 }
