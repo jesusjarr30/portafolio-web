@@ -1,8 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-class testBa extends React.Component {
-  render() {
-    return <div>Hola, soy un componente de clase</div>;
-  }
+function TestBa() {
+
+  return (
+
+    <a style={{ color: 'red' }}>Hola mundo</a>
+  );
 }
-export default testBa;
+export default TestBa;

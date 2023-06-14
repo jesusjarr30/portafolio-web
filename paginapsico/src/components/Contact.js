@@ -50,7 +50,7 @@ export const Contact = () => {
         <section className="contact" id="connect">
             <Container>
 
-                <Row className=""aling-items-center>
+                <Row className="align-items-center">
                 <Col md={6}>
                     <img src={contactImg} alt="Contact Us"/>
                 </Col>
