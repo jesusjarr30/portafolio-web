@@ -11,6 +11,7 @@ import React, { Component,Text } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Principal from './Principal';
 import Login from './components/Login';
+import Loginv from './components/seccion/Loginv';
 
 function App() {
   return (
